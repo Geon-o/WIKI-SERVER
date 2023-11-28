@@ -33,15 +33,15 @@ public class CategoryTest {
         /**
          * 서비스 로직 자체 검증
          */
-//        List<Category> categoryList = categoryRepository.findByCategoryName();
-//
-//        System.out.println(categoryList);
+        List<Category> categoryList = categoryRepository.findAll();
+
+        System.out.println(categoryList);
 
 
         /**
          * 서비스 함수 호출
          */
-        System.out.println(categoryService.queryCategoryList());
+//        System.out.println(categoryService.queryCategoryList());
     }
 
     /**
