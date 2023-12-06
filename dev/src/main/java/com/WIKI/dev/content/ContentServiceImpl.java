@@ -2,11 +2,13 @@ package com.WIKI.dev.content;
 
 import com.WIKI.dev.category.entity.Category;
 import com.WIKI.dev.category.repository.CategoryRepository;
+import com.WIKI.dev.content.dto.request.ContentListRequest;
 import com.WIKI.dev.content.dto.request.SaveContentRequest;
 import com.WIKI.dev.content.entity.Content;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -46,6 +48,11 @@ public class ContentServiceImpl implements ContentService {
         contentRepository.save(content);
 
         return true;
+    }
 
+    @Override
+    public List<Content> getContentByCategory(ContentListRequest contentListRequest) {
+        Long categoryId = contentListRequest.getCategoryId();
+        return contentRepository.findContentListByCategory(categoryId);
     }
 }

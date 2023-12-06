@@ -4,12 +4,15 @@ import com.WIKI.dev.category.entity.Category;
 import com.WIKI.dev.category.repository.CategoryRepository;
 import com.WIKI.dev.content.ContentRepository;
 import com.WIKI.dev.content.ContentService;
+import com.WIKI.dev.content.dto.request.ContentListRequest;
 import com.WIKI.dev.content.dto.request.SaveContentRequest;
 import com.WIKI.dev.content.entity.Content;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
@@ -45,5 +48,16 @@ public class ContentTest {
 //
 //
 //        contentRepository.save(content);
+    }
+
+    @Test
+    void ContentLIstByCategory() {
+        ContentListRequest contentListRequest = new ContentListRequest(1l);
+
+        List<Content> contentList = contentService.getContentByCategory(contentListRequest);
+
+        for (int i = 0; i < contentList.size(); i++) {
+            System.out.println("확인" + i + " : " + contentList.get(i).getTitle().toString());
+        }
     }
 }

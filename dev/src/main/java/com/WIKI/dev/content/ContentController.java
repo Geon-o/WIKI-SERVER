@@ -1,9 +1,13 @@
 package com.WIKI.dev.content;
 
 
+import com.WIKI.dev.content.dto.request.ContentListRequest;
 import com.WIKI.dev.content.dto.request.SaveContentRequest;
+import com.WIKI.dev.content.entity.Content;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/content")
@@ -20,5 +24,10 @@ public class ContentController {
     @PostMapping("/save")
     public Boolean saveContent(@RequestBody SaveContentRequest saveContentRequest) {
         return contentService.saveContent(saveContentRequest);
+    }
+
+    @PostMapping("/list")
+    public List<Content> contentList(@RequestBody ContentListRequest contentListRequest){
+        return contentService.getContentByCategory(contentListRequest);
     }
 }
