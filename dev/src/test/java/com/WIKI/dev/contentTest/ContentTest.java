@@ -1,19 +1,16 @@
 package com.WIKI.dev.contentTest;
 
-import com.WIKI.dev.category.entity.Category;
 import com.WIKI.dev.category.repository.CategoryRepository;
 import com.WIKI.dev.content.ContentRepository;
 import com.WIKI.dev.content.ContentService;
 import com.WIKI.dev.content.dto.request.ContentListRequest;
-import com.WIKI.dev.content.dto.request.SaveContentRequest;
+import com.WIKI.dev.content.dto.request.ContentManagementRequest;
 import com.WIKI.dev.content.entity.Content;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @SpringBootTest
 public class ContentTest {
@@ -32,9 +29,9 @@ public class ContentTest {
 
     @Test
     void saveContent() {
-        SaveContentRequest saveContentRequest = new SaveContentRequest(1l, "제목2", "내용3");
+        ContentManagementRequest contentManagementRequest = new ContentManagementRequest(1l, 1L,"제목1", "내용1");
 
-        System.out.println(contentService.saveContent(saveContentRequest));
+        System.out.println(contentService.saveContent(contentManagementRequest));
 
 //        Content content = new Content();
 //        content.setContents(saveContentRequest.getContent());
@@ -59,5 +56,12 @@ public class ContentTest {
         for (int i = 0; i < contentList.size(); i++) {
             System.out.println("확인" + i + " : " + contentList.get(i).getTitle().toString());
         }
+    }
+
+    @Test
+    void ModifyContent() {
+        ContentManagementRequest contentManagementRequest = new ContentManagementRequest(1L, 1L, "제목 변경", "내용 변경");
+
+        System.out.println(contentService.modifyContent(contentManagementRequest));
     }
 }
