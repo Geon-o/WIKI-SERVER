@@ -5,6 +5,7 @@ import com.WIKI.dev.content.ContentRepository;
 import com.WIKI.dev.content.ContentService;
 import com.WIKI.dev.content.dto.request.ContentListRequest;
 import com.WIKI.dev.content.dto.request.ContentManagementRequest;
+import com.WIKI.dev.content.dto.request.SaveContentRequest;
 import com.WIKI.dev.content.entity.Content;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +30,9 @@ public class ContentTest {
 
     @Test
     void saveContent() {
-        ContentManagementRequest contentManagementRequest = new ContentManagementRequest(1l, 1L,"제목1", "내용1");
+        SaveContentRequest saveContentRequest = new SaveContentRequest(1l, "제목1", "내용1");
 
-        System.out.println(contentService.saveContent(contentManagementRequest));
+        System.out.println(contentService.saveContent(saveContentRequest));
 
 //        Content content = new Content();
 //        content.setContents(saveContentRequest.getContent());

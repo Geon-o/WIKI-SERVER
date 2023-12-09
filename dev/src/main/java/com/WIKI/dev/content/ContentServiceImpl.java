@@ -4,6 +4,7 @@ import com.WIKI.dev.category.entity.Category;
 import com.WIKI.dev.category.repository.CategoryRepository;
 import com.WIKI.dev.content.dto.request.ContentListRequest;
 import com.WIKI.dev.content.dto.request.ContentManagementRequest;
+import com.WIKI.dev.content.dto.request.SaveContentRequest;
 import com.WIKI.dev.content.entity.Content;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,15 +26,15 @@ public class ContentServiceImpl implements ContentService {
 
     /**
      * 게시글 저장 로직
-     * @param contentManagementRequest
+     * @param saveContentRequest
      * @return
      */
     @Override
-    public boolean saveContent(ContentManagementRequest contentManagementRequest) {
+    public boolean saveContent(SaveContentRequest saveContentRequest) {
         Content content = new Content();
         Category category;
 
-        Optional<Category> maybeCategory = categoryRepository.findById(contentManagementRequest.getCategoryId());
+        Optional<Category> maybeCategory = categoryRepository.findById(saveContentRequest.getCategoryId());
 
         if (maybeCategory.isPresent()) {
             category = maybeCategory.get();
@@ -41,8 +42,8 @@ public class ContentServiceImpl implements ContentService {
             return false;
         }
 
-        content.setTitle(contentManagementRequest.getTitle());
-        content.setContents(contentManagementRequest.getContent());
+        content.setTitle(saveContentRequest.getTitle());
+        content.setContents(saveContentRequest.getContent());
         content.setCategory(category);
 
         contentRepository.save(content);
