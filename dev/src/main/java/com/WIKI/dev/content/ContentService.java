@@ -14,4 +14,7 @@ public interface ContentService {
     public List<Content> getContentByCategory(ContentListRequest contentListRequest);
 
     public Boolean modifyContent(ContentManagementRequest contentManagementRequest);
+
+    public Boolean deleteContent(Long contentId);
+
 }

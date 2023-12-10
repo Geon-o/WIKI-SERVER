@@ -65,4 +65,11 @@ public class ContentTest {
 
         System.out.println(contentService.modifyContent(contentManagementRequest));
     }
+
+    @Test
+    void deleteContent() {
+        ContentManagementRequest contentManagementRequest = new ContentManagementRequest(1L, 1L, "제목", "내용");
+        System.out.println(contentService.deleteContent(contentManagementRequest.getContentId()));
+
+    }
 }

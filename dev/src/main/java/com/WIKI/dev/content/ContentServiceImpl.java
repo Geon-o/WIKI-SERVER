@@ -85,4 +85,11 @@ public class ContentServiceImpl implements ContentService {
         contentRepository.save(content);
         return true;
     }
+
+    @Override
+    public Boolean deleteContent(Long contentId) {
+        contentRepository.deleteById(contentId);
+
+        return true;
+    }
 }

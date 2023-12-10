@@ -36,4 +36,9 @@ public class ContentController {
     public Boolean modifyContent(@RequestBody ContentManagementRequest contentManagementRequest) {
         return contentService.modifyContent(contentManagementRequest);
     }
+
+    @PostMapping("/delete")
+    public boolean deleteContent(@RequestBody ContentManagementRequest contentManagementRequest) {
+        return contentService.deleteContent(contentManagementRequest.getContentId());
+    }
 }
