@@ -4,3 +4,11 @@ server:
 spring:
   profiles:
     include: local
+
+  jpa:
+    open-in-view: false
+    database: mysql
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
