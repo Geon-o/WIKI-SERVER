@@ -5,6 +5,7 @@ import com.WIKI.dev.category.entity.Category;
 import com.WIKI.dev.category.repository.CategoryRepository;
 import com.WIKI.dev.category.service.CategoryService;
 import com.WIKI.dev.category.service.dto.request.RegisterCategoryRequest;
+import com.WIKI.dev.category.service.dto.request.RegisterSubCategoryRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -56,5 +57,12 @@ public class CategoryTest {
         category.setName(categoryRequest.getCategoryName());
 
         categoryRepository.save(category);
+    }
+
+    @Test
+    void registerSubCategory() {
+        RegisterSubCategoryRequest request = new RegisterSubCategoryRequest(1L, "서브 카테고리3");
+
+        categoryService.registerSubCategory(request);
     }
 }

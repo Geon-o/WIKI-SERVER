@@ -1,6 +1,7 @@
 package com.WIKI.dev.content.entity;
 
 import com.WIKI.dev.category.entity.Category;
+import com.WIKI.dev.category.entity.SubCategory;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,6 +36,6 @@ public class Content {
     private Date upDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
-    private Category category;
+    @JoinColumn(name = "subCategory_id")
+    private SubCategory subCategory;
 }

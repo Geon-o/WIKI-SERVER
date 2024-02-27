@@ -22,5 +22,5 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
-    private List<Content> content;
+    private List<SubCategory> subCategory;
 }
