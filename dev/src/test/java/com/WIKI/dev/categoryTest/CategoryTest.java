@@ -2,6 +2,7 @@ package com.WIKI.dev.categoryTest;
 
 
 import com.WIKI.dev.category.entity.Category;
+import com.WIKI.dev.category.entity.SubCategory;
 import com.WIKI.dev.category.repository.CategoryRepository;
 import com.WIKI.dev.category.service.CategoryService;
 import com.WIKI.dev.category.service.dto.request.RegisterCategoryRequest;
@@ -10,8 +11,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.swing.text.html.Option;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootTest
 public class CategoryTest {
@@ -35,23 +39,14 @@ public class CategoryTest {
         /**
          * 서비스 로직 자체 검증
          */
-        List<Category> categoryList = categoryRepository.findAll();
-
-        System.out.println(categoryList);
-
-
-        /**
-         * 서비스 함수 호출
-         */
-//        System.out.println(categoryService.queryCategoryList());
+        System.out.println(categoryRepository.findCategoryByIdAndAndSubCategory());
     }
-
     /**
      * 카테고리 등록하기 테스트
      */
     @Test
     void registerCategory() {
-        RegisterCategoryRequest categoryRequest = new RegisterCategoryRequest("테스트 카테고리");
+        RegisterCategoryRequest categoryRequest = new RegisterCategoryRequest("테스트 카테고리123");
 
         Category category = new Category();
         category.setName(categoryRequest.getCategoryName());
@@ -61,7 +56,7 @@ public class CategoryTest {
 
     @Test
     void registerSubCategory() {
-        RegisterSubCategoryRequest request = new RegisterSubCategoryRequest(1L, "서브 카테고리3");
+        RegisterSubCategoryRequest request = new RegisterSubCategoryRequest(2L, "두번째 서브카테고리3");
 
         categoryService.registerSubCategory(request);
     }

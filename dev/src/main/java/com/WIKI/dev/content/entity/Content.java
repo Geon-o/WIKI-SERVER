@@ -35,7 +35,7 @@ public class Content {
     @UpdateTimestamp
     private Date upDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "subCategory_id")
-    private SubCategory subCategory;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "subCategory_id")
+//    private SubCategory subCategory;
 }
