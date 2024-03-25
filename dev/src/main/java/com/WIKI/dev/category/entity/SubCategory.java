@@ -29,7 +29,4 @@ public class SubCategory {
     @JoinColumn(name = "category_id")
     private Category category;
 
-//    @OneToMany(mappedBy = "subCategory", fetch = FetchType.LAZY)
-//    private List<Content> contents;
-
 }
