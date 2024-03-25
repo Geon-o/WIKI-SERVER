@@ -30,7 +30,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<Category> queryCategoryList() {
-        List<Category> categoryList = categoryRepository.findCategoryByIdAndAndSubCategory();
+        List<Category> categoryList = categoryRepository.findCategoryWithSubCategories();
 
         return categoryList;
     }

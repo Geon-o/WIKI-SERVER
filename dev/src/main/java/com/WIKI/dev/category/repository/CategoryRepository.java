@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 
-    @Query("select c from Category c join fetch c.subCategory")
-    List<Category> findCategoryByIdAndAndSubCategory();
+    @Query("select c from Category c left join fetch c.subCategory")
+    List<Category> findCategoryWithSubCategories();
 
 }
