@@ -4,11 +4,13 @@ import com.WIKI.dev.category.entity.Category;
 import com.WIKI.dev.category.entity.SubCategory;
 import com.WIKI.dev.category.repository.CategoryRepository;
 import com.WIKI.dev.category.repository.SubCategoryRepository;
+import com.WIKI.dev.category.service.dto.request.EditCategoryRequest;
 import com.WIKI.dev.category.service.dto.request.RegisterCategoryRequest;
 import com.WIKI.dev.category.service.dto.request.RegisterSubCategoryRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.swing.text.html.Option;
 import java.util.ArrayList;
@@ -36,6 +38,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    @Transactional
     public void register(RegisterCategoryRequest registerCategoryRequest) {
         String categoryName = registerCategoryRequest.getCategoryName();
 
@@ -46,6 +49,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    @Transactional
     public void registerSubCategory(RegisterSubCategoryRequest request) {
         Long categoryId = request.getCategoryId();
 
@@ -69,5 +73,19 @@ public class CategoryServiceImpl implements CategoryService {
             log.info(e.getMessage());
         }
 
+    }
+
+    @Override
+    @Transactional
+    public void edit(EditCategoryRequest request) {
+        Optional<Category> maybeCategory = categoryRepository.findById(request.getId());
+
+        if (maybeCategory.isPresent()) {
+            Category category = maybeCategory.get();
+
+            category.setName(request.getCategoryName());
+
+            categoryRepository.save(category);
+        }
     }
 }
