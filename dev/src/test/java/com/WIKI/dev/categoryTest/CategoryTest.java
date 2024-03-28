@@ -69,4 +69,9 @@ public class CategoryTest {
         categoryService.edit(request);
 
     }
+
+    @Test
+    void remove() {
+        categoryService.remove(14L);
+    }
 }

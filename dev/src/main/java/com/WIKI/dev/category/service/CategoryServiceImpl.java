@@ -88,4 +88,10 @@ public class CategoryServiceImpl implements CategoryService {
             categoryRepository.save(category);
         }
     }
+
+    @Override
+    public void remove(Long id) {
+        Long categoryId = Long.valueOf(id);
+        categoryRepository.deleteById(categoryId);
+    }
 }

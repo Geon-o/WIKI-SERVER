@@ -13,6 +13,6 @@ public interface CategoryService {
     List<Category> queryCategoryList();
     void register(RegisterCategoryRequest registerCategoryRequest);
     void registerSubCategory(RegisterSubCategoryRequest request);
-
     void edit(EditCategoryRequest request);
+    void remove(Long id);
 }

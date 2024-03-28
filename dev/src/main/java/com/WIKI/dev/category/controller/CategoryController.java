@@ -41,4 +41,8 @@ public class CategoryController {
         categoryService.edit(request);
     }
 
+    @PostMapping("/remove")
+    public void remove(@RequestBody Long id) {
+        categoryService.remove(id);
+    }
 }
